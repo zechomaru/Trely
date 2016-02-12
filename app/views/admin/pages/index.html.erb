@@ -1,0 +1,81 @@
+<section class="content-wrapper">
+  <section class="content-header">
+    <h1>
+      Todas las paginas
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+      <li class="active">Here</li>
+    </ol>
+  </section>
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title"></h3>
+            <div class="box-tools">
+              <div class="input-group" style="width: 150px;">
+                <input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Search">
+                <div class="input-group-btn">
+                  <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </div>
+          </div><!-- /.box-header -->
+          <div class="box-body table-responsive no-padding">
+            <table class="table table-hover">
+              <tbody><tr>
+                <th>url</th>
+                <th>titulo</th>
+                <th>Sub-titulo</th>
+                <th>paso uno</th>
+                <th>paso dos</th>
+                <th>paso 3</th>
+                <th>activo</th>
+                <th>servico</th>
+                <th>paquete</th>
+                <th>creado</th>
+              </tr>
+              <% @pages.each do |page| %>
+                <tr>
+                  <td><%= page.url %></td>
+                  <td><%= page.title %></td>
+                  <td><%= page.subtitle %></td>
+                  <td><%= page.paso_one %></td>
+                  <td><%= page.paso_two %></td>
+                  <td><%= page.paso_tree %></td>
+                  <td><%= page.visibility %></td>
+                  <% if page.service.nil? %>
+                    <td></td>
+                  <%else%>
+                  <td><%= page.service.name %></td>
+                  <%end%>
+                  <% if page.bundle.nil? %>
+                    <td></td>
+                  <%else%>
+                  <td><%= page.bundle.name %></td>
+                  <%end%>
+                  <td><%= page.created_at.httpdate.to_date %></td>
+                  <td>
+                    <%= link_to edit_admin_page_path(page) do %>
+                      <i class="fa fa-edit"></i>
+                    <%end%>
+                  </td>
+                  <td>
+                    <%= link_to admin_page_path(page), method: :delete,
+                   data: { confirm: 'Are you sure?' } do %>
+                      <i class="fa fa-remove"></i>
+                   <%end%>
+                   </td>
+                  <!--td><span class="label label-success">Approved</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td-->
+                </tr>
+              <%end%>
+            </tbody></table>
+          </div><!-- /.box-body -->
+        </div><!-- /.box -->
+      </div>
+    </div>
+  </section>
+</section>

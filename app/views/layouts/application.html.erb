@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trely</title>
+  <%= javascript_include_tag 'application', params[:controller] %>
+  <%= stylesheet_link_tag "bootstrap", params[:controller], :media => "all" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+  <%= javascript_include_tag 'isotope', params[:controller] %>
+</body>
+</html>
